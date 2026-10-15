@@ -18,8 +18,6 @@ public class dcMotorPrac extends OpMode {
     @Override
     public void loop() {
 
-
-
         motors.turnOnIntake(.5);
         motors.drive(1, -1, 0);
     }

@@ -41,11 +41,14 @@ public class theMotos {
     }
 
     public void drive(double y, double x, double rx) {
+        //mecanum drive
+        double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
 
-        FLMotor.setPower(y + x + rx);
-        BLMotor.setPower(y - x + rx);
+        FLMotor.setPower(-((y + x + rx)/denominator));
+        BLMotor.setPower(-((y - x + rx)/denominator));
 
-        BRMotor.setPower(y - x - rx);
-        FRMotor.setPower(y + x - rx);
+        FRMotor.setPower(((y - x - rx)/denominator));
+        BRMotor.setPower(((y + x - rx)/denominator));
+
     }
 }
