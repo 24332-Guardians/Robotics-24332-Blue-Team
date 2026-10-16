@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.mechanisms;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-public class theMotos {
+public class theMotorsAndServos {
     private DcMotor Intake;
     private DcMotor Flywheel;
 
@@ -14,13 +14,20 @@ public class theMotos {
     private DcMotor BLMotor;
 
     public void init(HardwareMap hwMap) {
+
+        // The "DcMotor.RunMode.RUN_USING_ENCODER" makes it so that it will spin at a set velocity
+
+        // ----- Intake ----- //
+
         Intake = hwMap.get(DcMotor.class, "Intake");
         Intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        // -----------Drivetrain---------
+        // ----- Outtake ----- //
 
         Flywheel = hwMap.get(DcMotor.class, "Flywheel");
         Flywheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        // ----- Drivetrain Hardware Mapping ----- //
 
         FRMotor = hwMap.get(DcMotor.class, "FRMotor");
         FRMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -36,12 +43,12 @@ public class theMotos {
     }
 
     public void turnOnIntake(double speed) {
-        // accepts values between -1 and 1
         Intake.setPower(speed);
     }
 
     public void drive(double y, double x, double rx) {
-        //mecanum drive
+        // ----- The Mecanum Drive Math ----- //
+        // it might be wrong, but we'll see for now
         double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
 
         FLMotor.setPower(-((y + x + rx)/denominator));
