@@ -48,14 +48,17 @@ public class theMotorsAndServos {
 
     public void drive(double y, double x, double rx) {
         // ----- The Mecanum Drive Math ----- //
-        // it might be wrong, but we'll see for now
         double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
 
-        FLMotor.setPower(-((y + x + rx)/denominator));
-        BLMotor.setPower(-((y - x + rx)/denominator));
+        FLMotor.setPower((-y + x + rx)/denominator);
+        BLMotor.setPower((-y - x + rx)/denominator);
 
-        FRMotor.setPower(((y - x - rx)/denominator));
-        BRMotor.setPower(((y + x - rx)/denominator));
+        FRMotor.setPower((y + x + rx)/denominator);
+        BRMotor.setPower((y - x + rx)/denominator);
 
+    }
+
+    public void turnOnFlywheel(double speed) {
+        Flywheel.setPower(speed);
     }
 }

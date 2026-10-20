@@ -20,6 +20,10 @@ public class testTeleOp extends OpMode {
     boolean prevInpGameA = false;
     boolean intakeOn = false;
 
+    // For the Outake Toggle
+    boolean prevInpGameB = false;
+    boolean outakeOn = false;
+
     @Override
     public void loop() {
 
@@ -28,8 +32,15 @@ public class testTeleOp extends OpMode {
         double x = gamepad1.left_stick_x;
         double y = gamepad1.left_stick_y; // I saw somewhere that this might need to be flipped to negative
         double rx = gamepad1.right_stick_x; // x for the right stick used for strafing
+        double flySpeed = gamepad1.right_trigger;
+
+        // Driving
 
         motors.drive(y, x, rx);
+
+        // Flywheel
+
+        motors.turnOnFlywheel(flySpeed);
 
         // Toggle system for turning on and off the Intake with the A button on the gamepad
 
@@ -39,6 +50,14 @@ public class testTeleOp extends OpMode {
         if (intakeOn) {
             motors.turnOnIntake(.5);
         }
+        else {
+            motors.turnOnIntake(0);
+        }
+        /* Need to fix for outake please
+        if ((!prevInpGameB) && (gamepad1.b)) {
+            outakeOn = !outakeOn;
+        }
+         */
         prevInpGameA = gamepad1.a;
 
     }
