@@ -2,6 +2,10 @@ package org.firstinspires.ftc.teamcode.mechanisms;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.ServoImpl;
+
 
 public class theMotorsAndServos {
     private DcMotor Intake;
@@ -12,6 +16,9 @@ public class theMotorsAndServos {
     private DcMotor FLMotor;
     private DcMotor BRMotor;
     private DcMotor BLMotor;
+    private CRServo WindmillOut;
+    private CRServo LeftIntake;
+    private CRServo RightIntake;
 
     public void init(HardwareMap hwMap) {
 
@@ -40,10 +47,18 @@ public class theMotorsAndServos {
 
         BLMotor = hwMap.get(DcMotor.class, "BLMotor");
         BLMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        // ----- Servos ----- //
+
+        WindmillOut = hwMap.get(CRServo.class, "Windmill");
+        LeftIntake = hwMap.get(CRServo.class, "IntakeLeft");
+        RightIntake = hwMap.get(CRServo.class, "IntakeRight");
     }
 
     public void turnOnIntake(double speed) {
         Intake.setPower(speed);
+        LeftIntake.setPower(speed/2);
+        RightIntake.setPower(speed/2);
     }
 
     public void drive(double y, double x, double rx) {
@@ -60,5 +75,9 @@ public class theMotorsAndServos {
 
     public void turnOnFlywheel(double speed) {
         Flywheel.setPower(speed);
+    }
+
+    public void turnOnWindmill(double speed){
+        WindmillOut.setPower(speed);
     }
 }

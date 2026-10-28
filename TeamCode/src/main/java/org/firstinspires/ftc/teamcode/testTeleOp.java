@@ -20,9 +20,6 @@ public class testTeleOp extends OpMode {
     boolean prevInpGameA = false;
     boolean intakeOn = false;
 
-    // For the Outake Toggle
-    boolean prevInpGameB = false;
-    boolean outakeOn = false;
 
     @Override
     public void loop() {
@@ -38,9 +35,16 @@ public class testTeleOp extends OpMode {
 
         motors.drive(y, x, rx);
 
-        // Flywheel
+        // Outtake
 
         motors.turnOnFlywheel(flySpeed);
+
+        if (gamepad1.x) {
+            motors.turnOnWindmill(.2);
+        }
+        else {
+            motors.turnOnWindmill(0);
+        }
 
         // Toggle system for turning on and off the Intake with the A button on the gamepad
 
@@ -53,11 +57,7 @@ public class testTeleOp extends OpMode {
         else {
             motors.turnOnIntake(0);
         }
-        /* Need to fix for outake please
-        if ((!prevInpGameB) && (gamepad1.b)) {
-            outakeOn = !outakeOn;
-        }
-         */
+
         prevInpGameA = gamepad1.a;
 
     }
