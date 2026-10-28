@@ -40,10 +40,10 @@ public class testTeleOp extends OpMode {
         motors.turnOnFlywheel(flySpeed);
 
         if (gamepad1.x) {
-            motors.turnOnWindmill(.2);
+            motors.pushingOut(.2);
         }
         else {
-            motors.turnOnWindmill(0);
+            motors.pushingOut(0);
         }
 
         // Toggle system for turning on and off the Intake with the A button on the gamepad

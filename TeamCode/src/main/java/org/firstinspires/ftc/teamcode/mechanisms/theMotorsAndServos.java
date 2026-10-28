@@ -10,6 +10,8 @@ import com.qualcomm.robotcore.hardware.ServoImpl;
 public class theMotorsAndServos {
     private DcMotor Intake;
     private DcMotor Flywheel;
+    private CRServo LeftOutake;
+    private CRServo RightOutake;
 
     //-------Drivetrain------
     private DcMotor FRMotor;
@@ -19,6 +21,7 @@ public class theMotorsAndServos {
     private CRServo WindmillOut;
     private CRServo LeftIntake;
     private CRServo RightIntake;
+
 
     public void init(HardwareMap hwMap) {
 
@@ -33,6 +36,9 @@ public class theMotorsAndServos {
 
         Flywheel = hwMap.get(DcMotor.class, "Flywheel");
         Flywheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        LeftOutake = hwMap.get(CRServo.class, "LOutServo");
+        RightOutake = hwMap.get(CRServo.class, "ROutServo");
 
         // ----- Drivetrain Hardware Mapping ----- //
 
@@ -50,7 +56,6 @@ public class theMotorsAndServos {
 
         // ----- Servos ----- //
 
-        WindmillOut = hwMap.get(CRServo.class, "Windmill");
         LeftIntake = hwMap.get(CRServo.class, "IntakeLeft");
         RightIntake = hwMap.get(CRServo.class, "IntakeRight");
     }
@@ -77,7 +82,8 @@ public class theMotorsAndServos {
         Flywheel.setPower(speed);
     }
 
-    public void turnOnWindmill(double speed){
-        WindmillOut.setPower(speed);
+    public void pushingOut(double speed){
+        LeftOutake.setPower(speed);
+        RightOutake.setPower(speed);
     }
 }
