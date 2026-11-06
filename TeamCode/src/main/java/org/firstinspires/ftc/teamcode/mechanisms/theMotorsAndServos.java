@@ -44,15 +44,19 @@ public class theMotorsAndServos {
 
         FRMotor = hwMap.get(DcMotor.class, "FRMotor");
         FRMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        FRMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         FLMotor = hwMap.get(DcMotor.class, "FLMotor");
         FLMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        FLMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         BRMotor = hwMap.get(DcMotor.class, "BRMotor");
         BRMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        BRMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         BLMotor = hwMap.get(DcMotor.class, "BLMotor");
         BLMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        BLMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // ----- Servos ----- //
 
@@ -84,6 +88,6 @@ public class theMotorsAndServos {
 
     public void pushingOut(double speed){
         LeftOuttake.setPower(speed);
-        RightOuttake.setPower(-speed);
+        RightOuttake.setPower(speed);
     }
 }
