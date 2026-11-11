@@ -40,7 +40,7 @@ public class testTeleOp extends OpMode {
         motors.turnOnFlywheel(flySpeed);
 
         if (gamepad1.x) {
-            motors.pushingOut(.75);
+            motors.pushingOut(.5);
         }
         else {
             motors.pushingOut(0);
