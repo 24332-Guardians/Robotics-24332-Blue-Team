@@ -1,13 +1,10 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.teleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 import org.firstinspires.ftc.teamcode.mechanisms.theMotorsAndServos;
 
-
-
-@TeleOp
-public class testTeleOp extends OpMode {
+public class juliianTeleOp extends OpMode {
 
     theMotorsAndServos motors = new theMotorsAndServos();
 
@@ -19,6 +16,8 @@ public class testTeleOp extends OpMode {
     // For the Intake Toggle
     boolean prevInpGameA = false;
     boolean intakeOn = false;
+    boolean prevInpGameLTrig = false;
+    boolean outtakeOn = false;
 
 
     @Override
@@ -39,7 +38,11 @@ public class testTeleOp extends OpMode {
 
         motors.turnOnFlywheel(flySpeed);
 
-        if (gamepad1.x) {
+
+        if ((!prevInpGameLTrig) && (gamepad1.left_trigger_pressed)) {
+            outtakeOn = !outtakeOn;
+        }
+        if (outtakeOn) {
             motors.pushingOut(.5);
         }
         else {
@@ -59,6 +62,6 @@ public class testTeleOp extends OpMode {
         }
 
         prevInpGameA = gamepad1.a;
-
+        prevInpGameLTrig = gamepad1.left_trigger_pressed;
     }
 }
