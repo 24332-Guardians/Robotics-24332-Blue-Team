@@ -19,25 +19,25 @@ public class moveBackAndForth extends OpMode {
 
     @Override
     public void start() {
-        super.start();
         runtime.reset();
-
-        while (runtime.seconds() < 1.0) {
-            //motors.drive(1, 0, 0);
-            telemetry.addData("motors","forward");
-        }
-
-        while (runtime.seconds() < 2.0) {
-            //motors.drive(-1, 0, 0);
-            telemetry.addData("motors","backward");
-        }
-
-        //motors.drive(0,0,0);
-        telemetry.addData("motors","stopped");
     }
 
     @Override
     public void loop() {
+        while (runtime.seconds() < 1.0) {
+            //motors.drive(1, 0, 0);
+            telemetry.addData("drivetrain","forward");
+            telemetry.update();
+        }
 
+        while (runtime.seconds() < 2.0) {
+            //motors.drive(-1, 0, 0);
+            telemetry.addData("drivetrain","backward");
+            telemetry.update();
+        }
+
+        //motors.drive(0,0,0);
+        telemetry.addData("drivetrain","stopped");
+        telemetry.update();
     }
 }

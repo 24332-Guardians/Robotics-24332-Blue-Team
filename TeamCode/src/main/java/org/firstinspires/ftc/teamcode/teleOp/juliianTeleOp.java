@@ -1,9 +1,11 @@
 package org.firstinspires.ftc.teamcode.teleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.mechanisms.theMotorsAndServos;
 
+@TeleOp
 public class juliianTeleOp extends OpMode {
 
     theMotorsAndServos motors = new theMotorsAndServos();
