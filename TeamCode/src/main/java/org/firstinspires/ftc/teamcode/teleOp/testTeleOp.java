@@ -39,23 +39,32 @@ public class testTeleOp extends OpMode {
 
         motors.turnOnFlywheel(flySpeed);
 
-        if (gamepad1.x) {
-            motors.pushingOut(.5);
+        // testing for pushing out the balls if they are stuck
+        // may not work right now
+
+        if (gamepad1.y) {
+            motors.pushingOut(-1);
+            motors.turnOnIntake(-1);
         }
         else {
-            motors.pushingOut(0);
-        }
+            if (gamepad1.x) {
+                motors.pushingOut(.5);
+            }
+            else {
+                motors.pushingOut(0);
+            }
 
-        // Toggle system for turning on and off the Intake with the A button on the gamepad
+            // Toggle system for turning on and off the Intake with the A button on the gamepad
 
-        if ((!prevInpGameA) && (gamepad1.a)) {
-            intakeOn = !intakeOn;
-        }
-        if (intakeOn) {
-            motors.turnOnIntake(.75);
-        }
-        else {
-            motors.turnOnIntake(0);
+            if ((!prevInpGameA) && (gamepad1.a)) {
+                intakeOn = !intakeOn;
+            }
+            if (intakeOn) {
+                motors.turnOnIntake(.75);
+            }
+            else {
+                motors.turnOnIntake(0);
+            }
         }
 
         prevInpGameA = gamepad1.a;

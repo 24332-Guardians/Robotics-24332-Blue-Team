@@ -9,12 +9,12 @@ import org.firstinspires.ftc.teamcode.mechanisms.theMotorsAndServos;
 @Autonomous
 public class moveBackAndForth extends OpMode {
 
-    //theMotorsAndServos motors = new theMotorsAndServos();
+    theMotorsAndServos motors = new theMotorsAndServos();
     ElapsedTime runtime = new ElapsedTime();
 
     @Override
     public void init() {
-        //motors.init(hardwareMap);
+        motors.init(hardwareMap);
     }
 
     @Override
@@ -25,18 +25,18 @@ public class moveBackAndForth extends OpMode {
     @Override
     public void loop() {
         while (runtime.seconds() < 1.0) {
-            //motors.drive(1, 0, 0);
+            motors.drive(1, 0, 0);
             telemetry.addData("drivetrain","forward");
             telemetry.update();
         }
 
         while (runtime.seconds() < 2.0) {
-            //motors.drive(-1, 0, 0);
+            motors.drive(-1, 0, 0);
             telemetry.addData("drivetrain","backward");
             telemetry.update();
         }
 
-        //motors.drive(0,0,0);
+        motors.drive(0,0,0);
         telemetry.addData("drivetrain","stopped");
         telemetry.update();
     }
