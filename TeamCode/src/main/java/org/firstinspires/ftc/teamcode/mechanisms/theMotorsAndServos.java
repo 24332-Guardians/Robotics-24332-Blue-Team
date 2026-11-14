@@ -83,7 +83,7 @@ public class theMotorsAndServos {
     }
 
     public void turnOnFlywheel(double speed) {
-        Flywheel.setPower(-(Math.min(speed, .6)));
+        Flywheel.setPower(-(Math.min(speed, .5)));
     }
 
     public void pushingOut(double speed){
