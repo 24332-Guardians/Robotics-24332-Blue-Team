@@ -41,26 +41,27 @@ public class juliianTeleOp extends OpMode {
         motors.turnOnFlywheel(flySpeed);
 
 
-        if ((!prevInpGameLTrig) && (gamepad1.left_trigger_pressed)) {
-            outtakeOn = !outtakeOn;
-        }
-        if (outtakeOn) {
-            motors.pushingOut(.5);
+        if (gamepad1.y) {
+            motors.pushingOut(-1);
+            motors.turnOnIntake(-1);
         }
         else {
-            motors.pushingOut(0);
-        }
+            if (gamepad1.left_trigger_pressed) {
+                motors.pushingOut(.5);
+            } else {
+                motors.pushingOut(0);
+            }
 
-        // Toggle system for turning on and off the Intake with the A button on the gamepad
+            // Toggle system for turning on and off the Intake with the A button on the gamepad
 
-        if ((!prevInpGameA) && (gamepad1.a)) {
-            intakeOn = !intakeOn;
-        }
-        if (intakeOn) {
-            motors.turnOnIntake(.75);
-        }
-        else {
-            motors.turnOnIntake(0);
+            if ((!prevInpGameA) && (gamepad1.a)) {
+                intakeOn = !intakeOn;
+            }
+            if (intakeOn) {
+                motors.turnOnIntake(.75);
+            } else {
+                motors.turnOnIntake(0);
+            }
         }
 
         prevInpGameA = gamepad1.a;

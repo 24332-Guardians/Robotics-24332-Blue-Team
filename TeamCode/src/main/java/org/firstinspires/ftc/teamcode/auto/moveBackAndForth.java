@@ -24,14 +24,14 @@ public class moveBackAndForth extends OpMode {
 
     @Override
     public void loop() {
-        while (runtime.seconds() < 1.0) {
-            motors.drive(1, 0, 0);
+        while (runtime.seconds() < .5) {
+            motors.drive(.75, 0, 0);
             telemetry.addData("drivetrain","forward");
             telemetry.update();
         }
 
-        while (runtime.seconds() < 2.0) {
-            motors.drive(-1, 0, 0);
+        while (runtime.seconds() < 1.0) {
+            motors.drive(-.75, 0, 0);
             telemetry.addData("drivetrain","backward");
             telemetry.update();
         }
