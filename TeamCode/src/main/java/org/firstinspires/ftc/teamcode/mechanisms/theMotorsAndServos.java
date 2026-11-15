@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.ServoImpl;
 
 public class theMotorsAndServos {
     private DcMotor Intake;
-    private DcMotor Flywheel;
+    private DcMotor    Flywheel;
     private CRServo LeftOuttake;
     private CRServo RightOuttake;
 
@@ -83,7 +83,7 @@ public class theMotorsAndServos {
     }
 
     public void turnOnFlywheel(double speed) {
-        Flywheel.setPower(-(Math.min(speed, .5)));
+        Flywheel.setPower(-speed);
     }
 
     public void pushingOut(double speed){

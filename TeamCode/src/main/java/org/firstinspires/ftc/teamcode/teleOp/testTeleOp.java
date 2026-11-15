@@ -37,7 +37,13 @@ public class testTeleOp extends OpMode {
 
         // Outtake
 
-        motors.turnOnFlywheel(flySpeed);
+        if (gamepad1.right_trigger_pressed){
+            motors.turnOnFlywheel(1);
+        }
+        else {
+            motors.turnOnFlywheel(0);
+        }
+
 
         // testing for pushing out the balls if they are stuck
         // may not work right now
