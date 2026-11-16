@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.ServoImpl;
 
 public class theMotorsAndServos {
     private DcMotor Intake;
-    private DcMotor    Flywheel;
+    private DcMotor Flywheel;
     private CRServo LeftOuttake;
     private CRServo RightOuttake;
 
